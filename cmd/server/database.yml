@@ -2,8 +2,8 @@
 development:
   dialect: postgres
   database: goatsnap_development
-  user: postgres
-  password: postgres
+  user: goatsnap
+  password: 20goatsnapto10
   host: 127.0.0.1
   pool: 5
 
