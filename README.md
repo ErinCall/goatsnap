@@ -1,6 +1,12 @@
-# Welcome to Buffalo!
+# Goatsnap
 
-Thank you for choosing Buffalo for your web development needs.
+Goatsnap is a golang port of [Catsnap](https://github.com/erincall/catsnap), which is so horribly bit-rotted it can no longer be maintained.
+
+## Things to install first
+
+* [Buffalo](https://gobuffalo.io/en/docs/getting-started/installation/)
+* [Helm](https://github.com/helm/helm#install)
+* Kubernetes (I've just used Docker Desktop)
 
 ## Database Setup
 
@@ -17,20 +23,16 @@ Port-forward to the database:
 kubectl port-forward --namespace default svc/goatsnap-postgresql 5432:5432 >/dev/null &
 ```
 
-## Starting the Application
+## Assorted TODOs and notes
 
-Buffalo ships with a command that will watch your application and automatically rebuild the Go binary and any assets for you. To do that run the "buffalo dev" command:
+* serve /favicon.ico as /assets/images/favicon.ico (some kind of serve_static directive?)
+* creating the favicon.ico:
 
-	$ buffalo dev
-
-If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you should see a "Welcome to Buffalo!" page.
-
-**Congratulations!** You now have your Buffalo application up and running.
-
-## What Next?
-
-We recommend you heading over to [http://gobuffalo.io](http://gobuffalo.io) and reviewing all of the great documentation there.
-
-Good luck!
-
-[Powered by Buffalo](http://gobuffalo.io)
+```fish
+# brew install imagemagick
+for size in 16 32 48 64 152
+    convert favicon-full.png -resize $size"x"$size -filter spline -unsharp 0x6+0.5+0  favicon-"$size".png
+end
+convert favicon-{16,32,48,64,152}.png favicon.ico
+rm favicon-{16,32,48,64,152}.png
+```
