@@ -4,17 +4,18 @@ Thank you for choosing Buffalo for your web development needs.
 
 ## Database Setup
 
-It looks like you chose to set up your application using a database! Fantastic!
+Build a local database:
+```bash
+helm repo add stable=https://kubernetes-charts.storage.googleapis.com/ # Only need to run this once
+helm dependency update deployments/helm/goatsnap
+helm upgrade --install --values deployments/helm/goatsnap/development_values.yaml goatsnap deployments/helm/goatsnap/
+```
 
-The first thing you need to do is open up the "database.yml" file and edit it to use the correct usernames, passwords, hosts, etc... that are appropriate for your environment.
+Port-forward to the database:
 
-You will also need to make sure that **you** start/install the database of your choice. Buffalo **won't** install and start it for you.
-
-### Create Your Databases
-
-Ok, so you've edited the "database.yml" file and started your database, now Buffalo can create the databases in that file for you:
-
-	$ buffalo pop create -a
+```bash
+kubectl port-forward --namespace default svc/goatsnap-postgresql 5432:5432 >/dev/null &
+```
 
 ## Starting the Application
 
