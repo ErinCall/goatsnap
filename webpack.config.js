@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserJsPlugin = require("terser-webpack-plugin");
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const configurator = {
@@ -92,17 +92,18 @@ const configurator = {
       return config
     }
 
-    const uglifier = new UglifyJsPlugin({
-      uglifyOptions: {
-        beautify: false,
-        mangle: {keep_fnames: true},
+    const terser = new TerserPlugin({
+      terserOptions: {
         output: {comments: false},
-        compress: {}
+        keep_fnames: true,
+        output: {
+          beautify: false
+        }
       }
     })
 
     config.optimization = {
-      minimizer: [uglifier]
+      minimizer: [terser]
     }
 
     return config
