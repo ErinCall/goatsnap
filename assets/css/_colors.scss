@@ -1,0 +1,19 @@
+$background: #212121;
+$text: #cac5bc;
+$link: #a0b582;
+$link_using: lighten($link, 10%);
+
+// Panel: a thing containing a discrete set of stuff
+// Pill: bootstrap's nav-pills; a roundrect around some text.
+// The pill colors are chosen on the assumption they'll be inside a Panel.
+$panel: #8b8e8d;
+$pill: #5e6a4e;
+$pill_link: #72584a;
+
+// active: in the sense of Bootstrap's "active" class.
+$pill_active: darken($panel, 30%);
+$pill_active_link: lighten($pill_link, 20%);
+
+// using: hovered, selected, etc. The user is looking at this thing.
+$pill_using: lighten($pill, 20%);
+$pill_using_link: darken($pill_link, 20%);

@@ -11,18 +11,20 @@
     <link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
   </head>
   <body>
-
-    <header>
-       <a href="<%= rootPath() %>">
-        <h1>Goatsnap</h1>
-      </a>
-    </header>
-
+    <nav>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="<%= rootPath() %>" class="nav-link" id="home-link">Goatsnap</a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= imageCreatePath() %>" class="nav-link">Add images</a>
+        </li>
+      </ul>
+    </nav>
     <div class="container">
       <%= partial("flash.html") %>
       <%= yield %>
     </div>
-
     <%= javascriptTag("application.js") %>
   </body>
 </html>
