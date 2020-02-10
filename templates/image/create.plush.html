@@ -1,1 +1,18 @@
-<h1>Image#Create</h1>
+<h2>Add images</h2>
+
+<div class="row"> <!-- just the whole page -->
+  <div id="image-dropzone" class="panel col-1">
+    <form enctype="multipart/form-data" id="new-image">
+      <input type="file" name="image-contents" id="image-contents" accept="image/png, image/jpeg, image/gif" multiple />
+      <div>Upload files by</div>
+      <label for="image-contents" class="btn btn-primary">pressing button</label>
+      <div>or dragging onto panel :)</div>
+    </form>
+  </div>
+  <div class="col-9">
+    <output for="image-contents" id="image-previews" name="image-previews"></output>
+  </div>
+  <div class="panel col-2">
+    I AM THE IMAGE CONTROLS
+  </div>
+</div>

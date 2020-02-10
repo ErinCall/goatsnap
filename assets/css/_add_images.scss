@@ -1,0 +1,65 @@
+$preview_size: 320px;
+
+// Hide the actual file input, since it's ugly. The associated label will do the work instead.
+#image-contents {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+// When the file input gets focused (i.e. user hits tab), make the label look like it's hovered
+// See the `.btn-primary:hover, .btn-primary:focus` rule in _goatsnap.css.
+// (the + selector means "the next element after #image-contents")
+#image-contents:focus + .btn-primary {
+  background-color: $pill_using;
+  border-color: $pill_using_link;
+  color: $pill_using_link;
+}
+
+#image-dropzone {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: $preview_size;
+  label {
+    // The label needs to be a label to interact correctly with the file input, but it should look like a link.
+    cursor: pointer;
+  }
+  // Center-align everything inside this panel
+  * {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+}
+
+#image-dropzone.ready {
+  background-color: $panel_active;
+  color: $panel_active_text;
+}
+
+#image-previews {
+  display: flex;   // these two lines ensure that .preview boxes with shorter images stretch to
+  flex-wrap: wrap; // match .preview boxes with taller images
+}
+
+.preview {
+  // sass variables inside CSS functions need a #{} wrapper; see https://sass-lang.com/documentation/syntax/special-functions
+  min-height: calc(#{$preview_size} + 2rem);
+  width: calc(#{$preview_size} + 2rem);
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid $panel;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  overflow-wrap: anywhere; // ensure long filenames get wrapped, even if they don't have word-breaks
+
+  img {
+    margin: auto;
+    display: block;
+    max-height: $preview_size;
+    max-width: $preview_size;
+  }
+}

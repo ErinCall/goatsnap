@@ -14,14 +14,14 @@
     <nav>
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a href="<%= rootPath() %>" class="nav-link" id="home-link">Goatsnap</a>
+          <a href="<%= rootPath() %>" class="btn btn-primary nav-link" id="home-link">Goatsnap</a>
         </li>
         <li class="nav-item">
-          <a href="<%= imageCreatePath() %>" class="nav-link">Add images</a>
+          <a href="<%= imageCreatePath() %>" class="btn btn-primary nav-link">Add images</a>
         </li>
       </ul>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
       <%= partial("flash.html") %>
       <%= yield %>
     </div>
